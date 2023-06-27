@@ -1,8 +1,15 @@
 #include "MyUtil.h"
 
 
+void printIntVet(int *vet, int n){
+    for(int i = 0; i<n; i++){
+        printf("%d ", vet[i]);
+    }
+    ln();
+}
+
 void cls(int time) {
-    sleep(time);
+    //sleep(time);
     #ifdef _WIN32  // For Windows
         system("cls");
     #else  // For UNIX-like systems (Linux, macOS, etc.)
@@ -17,6 +24,16 @@ void ln() {
 
 int randRange(int min, int max) {
     return (rand() % (max - min + 1)) + min;
+}
+
+int* randIntVet(int max, int min, int n){
+    int *vet = (int*)malloc(n * sizeof(int));
+
+    for(int i = 0; i < n; i++){
+        vet[i] = randRange(min, max);
+    }
+
+    return vet;
 }
 
 int ask2op(const char* question) {

@@ -7,28 +7,15 @@
 #include <ctype.h>
 #include <unistd.h>
 
-typedef struct {
-    int id;
-    int rodada;
-    char resposta;
-} Log;
-
-typedef struct {
-    int pos;
-    int point;
-    char* nome;
-} Leaderboard;
-
-typedef struct {
-    int id, balance, maxPoint;
-    char* nome;
-} Jog;
+void printIntVet(int *vet, int n);
 
 void cls(int time);
 
 void ln();
 
 int randRange(int min, int max);
+
+int* randIntVet(int max, int min, int n);
 
 int ask2op(const char* question);
 
