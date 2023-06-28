@@ -62,3 +62,42 @@ void capStr(char** str) {
         (*str)[i] = toupper((*str)[i]);
     }
 }
+
+void fillFileWithRandomIntegers(const char* filename, int min, int max, int size) {
+    FILE* file = fopen(filename, "w");
+    if (!file) {
+        printf("Failed to open the file.\n");
+        return;
+    }
+
+    int* vector = randIntVet(max, min, size);
+    if (!vector) {
+        fclose(file);
+        return;
+    }
+
+    for (int i = 0; i < size; i++) {
+        fprintf(file, "%d ", vector[i]); // Write the integer to the file
+    }
+
+    fclose(file);
+    free(vector);
+}
+
+int* loadIntegersFromFile(const char* filename, int* size, int maxSize){
+    FILE* fp = fopen(filename, "r");
+    if(!fp) exit(0);
+
+    int *inp = (int*)malloc(sizeof(int)*maxSize);
+    int num, i = 0;
+    while(fscanf(fp, "%d ", &num) == 1){
+        if(i >= maxSize) break;
+        inp[i++] = num;
+    }
+    
+    
+    fclose(fp);
+    *size = i;
+
+    return inp;
+}

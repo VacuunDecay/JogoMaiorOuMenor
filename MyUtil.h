@@ -21,4 +21,8 @@ int ask2op(const char* question);
 
 void capStr(char** str);
 
+void fillFileWithRandomIntegers(const char* filename, int min, int max, int size);
+
+int* loadIntegersFromFile(const char* filename, int* size, int maxSize);
+
 #endif // MYUTIL_H
